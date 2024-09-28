@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "ca2113d7-564c-4502-ae2d-2dffd6737813",
+		"name": "HAIBAZO JSC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27916360"
+	},
+	"item": [
+		{
+			"name": "/product/",
+			"item": [
+				{
+					"name": "1. Filter product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/product?pageNo=0&pageSize=2&categoryId=1&styleId=1&size=S,M,L,XL",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"product"
+							],
+							"query": [
+								{
+									"key": "pageNo",
+									"value": "0"
+								},
+								{
+									"key": "pageSize",
+									"value": "2"
+								},
+								{
+									"key": "color",
+									"value": "red",
+									"disabled": true
+								},
+								{
+									"key": "categoryId",
+									"value": "1"
+								},
+								{
+									"key": "styleId",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "S,M,L,XL"
+								},
+								{
+									"key": "price",
+									"value": "120",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "á",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Product detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/v1/product/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/category/",
+			"item": [
+				{
+					"name": "1. List category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/v1/category"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/color/",
+			"item": [
+				{
+					"name": "1. List color",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/v1/color"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/style/",
+			"item": [
+				{
+					"name": "1. List style",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/v1/style"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/size/",
+			"item": [
+				{
+					"name": "1. List size",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/v1/size"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
