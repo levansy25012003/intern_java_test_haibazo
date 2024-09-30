@@ -4,3 +4,5 @@
 - **Database:** MySQL
 - **API:** RESTful API cho các thao tác tìm kiếm nâng cao, sắp xếp cơ bản, chi tiết sản phẩm
 - **Quản Lý Phụ Thuộc:** Maven
+- **Tool thiết kế ERD:** StartUML
+  
