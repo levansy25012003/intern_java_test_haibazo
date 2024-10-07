@@ -60,6 +60,34 @@ CREATE TABLE product_size (
      FOREIGN KEY (product_id) REFERENCES product(id)
 );
 
+CREATE TABLE role (
+    id    INTEGER AUTO_INCREMENT PRIMARY KEY,
+    name  VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE user (
+    id            INTEGER AUTO_INCREMENT PRIMARY KEY,
+    fullname      VARCHAR(100) NOT NULL,
+    phone_number  VARCHAR(10) NOT NULL,
+    address       VARCHAR(200),
+    password      VARCHAR(100) NOT NULL,
+    is_active     TINYINT(1) NOT NULL,
+    date_of_birth DATE,
+    role_id       INTEGER,
+    FOREIGN KEY (role_id) REFERENCES role(id)
+);
+
+CREATE TABLE token (
+    id              INTEGER AUTO_INCREMENT PRIMARY KEY,
+    token           VARCHAR(255) NOT NULL,
+    token_type      VARCHAR(50),
+    expiration_date DATETIME,
+    revoked         TINYINT(1),
+    expired         TINYINT(1),
+    user_id         INTEGER,
+    FOREIGN KEY (user_id) REFERENCES user(id)
+);
+
 # INSERT DATA
 INSERT INTO category (category_name)
 VALUES ('Home & Decor'),
@@ -170,3 +198,30 @@ VALUES
     (1, 21), (2, 22), (3, 23), (4, 24), (5, 25),
     (1, 26), (2, 27), (3, 28), (4, 27), (5, 28),
     (2, 1), (3, 1), (4, 1), (2, 3), (3, 4), (4, 5);
+
+-- Dữ liệu mẫu cho bảng role
+INSERT INTO role (id, name)
+VALUES
+    (1, 'ADMIN'),
+    (2, 'USER'),
+    (3, 'MODERATOR');
+
+-- Dữ liệu mẫu cho bảng user
+INSERT INTO user (id, fullname, phone_number, address, password, is_active, date_of_birth, role_id)
+VALUES
+    (1, 'John Doe', '0912345678', '123 Main St', 'password123', 1, '1990-05-12', 1),
+    (2, 'Jane Smith', '0923456789', '456 Oak St', 'password456', 1, '1992-08-22', 2),
+    (3, 'Bob Johnson', '0934567890', '789 Pine St', 'password789', 0, '1988-12-02', 2),
+    (4, 'Alice Brown', '0945678901', '987 Elm St', 'password111', 1, '1995-04-14', 3),
+    (5, 'Charlie Davis', '0956789012', '654 Maple St', 'password222', 1, '1993-03-09', 1);
+
+-- Dữ liệu mẫu cho bảng token
+INSERT INTO token (id, token, token_type, expiration_date, revoked, expired, user_id)
+VALUES
+    (1, 'token12345', 'ACCESS', '2024-12-31 23:59:59', 0, 0, 1),
+    (2, 'token67890', 'REFRESH', '2024-11-30 23:59:59', 0, 0, 1),
+    (3, 'token11111', 'ACCESS', '2024-10-31 23:59:59', 1, 0, 2),
+    (4, 'token22222', 'REFRESH', '2024-12-15 23:59:59', 0, 1, 2),
+    (5, 'token33333', 'ACCESS', '2024-10-20 23:59:59', 1, 1, 3);
+
+select * from user;
